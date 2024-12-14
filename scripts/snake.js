@@ -37,11 +37,7 @@ class snake {
     }
 
     hasEatenTheFood(food) {
-        if (this.areTouching(this.head, food)) {
-            return true
-        }
-
-        return false
+        return this.areTouching(this.head, food)
     }
 
     grow() {

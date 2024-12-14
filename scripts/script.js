@@ -130,13 +130,13 @@ function UpdateHighScore() {
 }
 
 function endGame(message) {
+    document.getElementById("gameOutcome").innerHTML = ''
     var gameOverScreen = document.createElement("h1");
     gameOverScreen.style.color = "white";
     gameOverScreen.innerHTML = message
     document.getElementById("game").style.display = "none";
     document.getElementById("settingsMenu").style.display = "block";
     document.getElementById("gameOutcome").appendChild(gameOverScreen)
-    //canvas.replaceWith(gameOverScreen)
     stop = true;
 }
 
@@ -146,7 +146,7 @@ function pickFoodLocation() {
     const h = Math.floor(canvas.height / SNAKE_SIZE);
 
     if (s.tail.length >= w * h) {
-        return null; // No space for new food
+        return null;
     }
 
     let randomW, randomH;
@@ -159,7 +159,7 @@ function pickFoodLocation() {
 }
 
 function handleSubmit(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     // Get form values
     const form = event.target;
@@ -193,7 +193,6 @@ function handleSubmit(event) {
 
     document.getElementById("game").style.display = "block";
     document.getElementById("settingsMenu").style.display = "none";
-    document.getElementById("gameOutcome").innerHTML = ''
 
     RefreshHighScore()
 
