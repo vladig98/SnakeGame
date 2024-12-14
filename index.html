@@ -13,8 +13,40 @@
 </head>
 
 <body>
-    <div id="score">Points: 0</div>
-    <canvas id="canvas" width=600 height=600></canvas>
+    <div id="settingsMenu">
+        <div id="gameOutcome"></div>
+        <h4>Settings</h4>
+        <form onsubmit="handleSubmit(event)">
+            <div>
+                <span>Speed</span>
+                <div>
+                    <span>Slow</span>
+                    <input checked type="radio" name="speed" value="slow" required />
+                    <span>Medium</span>
+                    <input type="radio" name="speed" value="medium" required />
+                    <span>Fast</span>
+                    <input type="radio" name="speed" value="fast" required />
+                </div>
+            </div>
+            <div>
+                <span>Size</span>
+                <div>
+                    <span>Small</span>
+                    <input checked type="radio" name="size" value="small" required />
+                    <span>Medium</span>
+                    <input type="radio" name="size" value="medium" required />
+                    <span>Large</span>
+                    <input type="radio" name="size" value="large" required />
+                </div>
+            </div>
+            <input type="submit" value="Play" />
+        </form>
+    </div>
+    <div id="game">
+        <div id="score">Points: 0</div>
+        <div id="high-score">Highest Score: 0</div>
+        <canvas id="canvas" width=600 height=600></canvas>
+    </div>
 </body>
 
 </html>

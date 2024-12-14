@@ -111,14 +111,29 @@ function IsDead(canvas) {
         return;
     }
 
+    UpdateHighScore()
+
     endGame("GAME OVER!!!")
+}
+
+function UpdateHighScore() {
+    let highScore = localStorage.getItem("highScore") || 0;
+
+    if (points <= highScore) {
+        return
+    }
+
+    localStorage.setItem("highScore", points);
 }
 
 function endGame(message) {
     var gameOverScreen = document.createElement("h1");
     gameOverScreen.style.color = "white";
     gameOverScreen.innerHTML = message
-    canvas.replaceWith(gameOverScreen)
+    document.getElementById("game").style.display = "none";
+    document.getElementById("settingsMenu").style.display = "block";
+    document.getElementById("gameOutcome").appendChild(gameOverScreen)
+    //canvas.replaceWith(gameOverScreen)
     stop = true;
 }
 
@@ -140,4 +155,48 @@ function pickFoodLocation() {
     return { x: randomW * SNAKE_SIZE, y: randomH * SNAKE_SIZE };
 }
 
-startAnimating(FPS);
+function handleSubmit(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get form values
+    const form = event.target;
+    const speed = form.speed.value;
+    const size = form.size.value;
+
+    // Set FPS based on speed
+    if (speed === "slow") {
+        FPS = 5;
+    } else if (speed === "medium") {
+        FPS = 10;
+    } else if (speed === "fast") {
+        FPS = 15;
+    }
+
+    // Set SNAKE_SIZE based on size
+    if (size === "small") {
+        SNAKE_SIZE = 10;
+    } else if (size === "medium") {
+        SNAKE_SIZE = 25;
+    } else if (size === "large") {
+        SNAKE_SIZE = 40;
+    }
+
+    points = 0;
+    score.innerHTML = "Points: " + points
+    xDir = 1
+    yDir = 0
+    s = new snake(new particle(10 * SNAKE_SIZE, 0, SNAKE_SIZE, COLORS.snakeHead));
+    foodLocation = pickFoodLocation()
+
+    document.getElementById("game").style.display = "block";
+    document.getElementById("settingsMenu").style.display = "none";
+    document.getElementById("gameOutcome").innerHTML = ''
+
+    // Start the game
+    startAnimating(FPS);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    let highScore = localStorage.getItem("highScore") || 0;
+    document.getElementById('high-score').innerHTML = "Highest Score: " + highScore
+})
