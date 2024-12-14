@@ -106,3 +106,17 @@ body {
     background-color: #00806a;
     transform: scale(1.05);
 }
+
+@media screen and (max-width: 900px) {
+    #canvas {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #canvas {
+        width: 200px;
+        height: 200px;
+    }
+}
