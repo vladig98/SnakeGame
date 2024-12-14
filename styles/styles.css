@@ -1,0 +1,20 @@
+canvas {
+    border: 1px solid #fffFFF;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #1a1a2e;
+}
+
+#score {
+    margin-bottom: 5rem;
+    color: white;
+    font-size: 20px;
+}
