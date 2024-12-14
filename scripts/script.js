@@ -117,13 +117,16 @@ function IsDead(canvas) {
 }
 
 function UpdateHighScore() {
-    let highScore = localStorage.getItem("highScore") || 0;
+    let speed = document.querySelector('input[name="speed"]:checked').value;
+    let size = document.querySelector('input[name="size"]:checked').value;
+
+    let highScore = localStorage.getItem(`highScore-${speed}-${size}`) || 0;
 
     if (points <= highScore) {
         return
     }
 
-    localStorage.setItem("highScore", points);
+    localStorage.setItem(`highScore-${speed}-${size}`, points);
 }
 
 function endGame(message) {
@@ -192,11 +195,20 @@ function handleSubmit(event) {
     document.getElementById("settingsMenu").style.display = "none";
     document.getElementById("gameOutcome").innerHTML = ''
 
+    RefreshHighScore()
+
     // Start the game
     startAnimating(FPS);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let highScore = localStorage.getItem("highScore") || 0;
-    document.getElementById('high-score').innerHTML = "Highest Score: " + highScore
+    RefreshHighScore()
 })
+
+function RefreshHighScore() {
+    let speed = document.querySelector('input[name="speed"]:checked').value;
+    let size = document.querySelector('input[name="size"]:checked').value;
+
+    let highScore = localStorage.getItem(`highScore-${speed}-${size}`) || 0;
+    document.getElementById('high-score').innerHTML = "Highest Score: " + highScore
+}
