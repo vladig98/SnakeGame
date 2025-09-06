@@ -2,6 +2,11 @@
 
 A **JavaScript-based** implementation of the classic **Snake Game**, featuring **smooth controls, responsive movement, and dynamic gameplay**. Unlike traditional versions, the **edges do not end the game**—instead, the challenge lies in avoiding self-collisions.  
 
+## 🚀 Live Demo
+
+You can check out the live version of this project here:  
+👉 [Live Demo](https://snake-game-tau-navy.vercel.app/)
+
 ## 🎮 Features  
 
 - **Smooth & Responsive Controls** – Enjoy fluid movement for an optimal gaming experience.  
